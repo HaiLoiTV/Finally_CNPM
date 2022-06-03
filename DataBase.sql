@@ -1,4 +1,7 @@
-
+create database QLNhaSach
+go
+use QLNhaSach
+go
 CREATE TABLE CaLamViec
 (
   MaCa CHAR(10),
@@ -16,6 +19,7 @@ CREATE TABLE Sach
   GiaBan Money,
   SL INT,
   QuocGia NVARCHAR(20),
+  TheLoai NVARCHAR(20),
   PRIMARY KEY (MaSach)
 );
 
