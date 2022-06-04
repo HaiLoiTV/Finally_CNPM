@@ -2,42 +2,6 @@ create database QLNhaSach
 go
 use QLNhaSach
 go
-<<<<<<< HEAD
-=======
-CREATE TABLE CaLamViec
-(
-  MaCa CHAR(10),
-  GioVao Time,
-  GioRa Time,
-  PRIMARY KEY (MaCa)
-);
-
-CREATE TABLE Sach
-(
-  MaSach CHAR(10),
-  TenSach NVARCHAR(30),
-  TacGia NVARCHAR(30),
-  NXB NVARCHAR(30),
-  GiaBan Money,
-  SL INT,
-  QuocGia NVARCHAR(20),
-  TheLoai NVARCHAR(20),
-=======
-
-CREATE TABLE Sach
-(
-  MaSach VARCHAR(4),
-  TenSach NVARCHAR(100),
-  TacGia NVARCHAR(50),
-  TheLoai NVARCHAR(30),
-  NXB NVARCHAR(50),
-  QuocGia NVARCHAR(50),
-  GiaBan INT,
-  SoLuong INT,
-  PRIMARY KEY (MaSach)
-);
-
->>>>>>> 1a2dba500676e0b4425faed988ec3cdc6f831de4
 CREATE TABLE KhachHang
 (
   MaKH VARCHAR(4),
@@ -78,11 +42,7 @@ CREATE TABLE HoaDon
   NgayLap DATE,
   MaKH VARCHAR(4),
   MaNV VARCHAR(4),
-<<<<<<< HEAD
   PRIMARY KEY (MaHD),
-=======
-  PRIMARY KEY (MaHD, MaKH),
->>>>>>> 1a2dba500676e0b4425faed988ec3cdc6f831de4
   FOREIGN KEY (MaKH) REFERENCES KhachHang(MaKH),
   FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV)
 );
@@ -93,15 +53,6 @@ CREATE TABLE CaLamViec
   MaCa VARCHAR(4),
   PRIMARY KEY (MaCa, MaNV),
   FOREIGN KEY (MaNV) REFERENCES NhanVien(MaNV)
-);
-CREATE TABLE HoaDon_Sach
-(
-  MaHD VARCHAR(4),
-  MaSach CHAR(4),
-  SoLuong int,
-  PRIMARY KEY (MaHD, MaSach),
-  FOREIGN KEY (MaHD) REFERENCES HoaDon(MaHD),
-  FOREIGN KEY (MaSach) REFERENCES Sach(MaSach)
 );
 CREATE TABLE Sach
 (
@@ -114,6 +65,15 @@ CREATE TABLE Sach
   SL INT,
   GiaBan Money,
   PRIMARY KEY(MaSach)
+);
+CREATE TABLE HoaDon_Sach
+(
+  MaHD VARCHAR(4),
+  MaSach CHAR(4),
+  SoLuong int,
+  PRIMARY KEY (MaHD, MaSach),
+  FOREIGN KEY (MaHD) REFERENCES HoaDon(MaHD),
+  FOREIGN KEY (MaSach) REFERENCES Sach(MaSach)
 );
 -------------------------------------------------------------------
 INSERT INTO Sach VALUES
@@ -142,7 +102,7 @@ INSERT INTO Sach VALUES
 ('MS23', N'Tạp chí Tuổi trẻ số 7', N'Báo tuổi trẻ', N'Tạp chí', N'Nhà Xuất Bản Báo tuổi trẻ', N'Việt Nam', 53, 20000),
 ('MS24', N'Tạp chí Tuổi trẻ số 8', N'Báo tuổi trẻ', N'Tạp chí', N'Nhà Xuất Bản Báo tuổi trẻ', N'Việt Nam', 54, 20000),
 ('MS25', N'Tạp chí Tuổi trẻ số 9', N'Báo tuổi trẻ', N'Tạp chí', N'Nhà Xuất Bản Báo tuổi trẻ', N'Việt Nam', 55, 20000),
-('MS26', N'Tạp chí Tuổi trẻ số 10', N'Báo tuổi trẻ', N'Tạp chí', N'Nhà Xuất Bản Báo tuổi trẻ', N'Việt Nam', 56, 25000),
+('MS26', N'Tạp chí Tuổi trẻ số 10', N'Báo tuổi trẻ', N'Tạp chí', N'Nhà Xuất Bản Báo tuổi trẻ', N'Việt Nam', 56, 25000)
 --('MS27', N'Doraemon tập 1', N'Fujiko F. Fujio', N'Truyện tranh', N'Nhà Xuất Bản Kim Đồng', N'Nhật Bản', 53, 16000),
 --('MS28', N'Doraemon tập 2', N'Fujiko F. Fujio', N'Truyện tranh', N'Nhà Xuất Bản Kim Đồng', N'Nhật Bản', 52, 16000),
 --('MS29', N'Doraemon tập 3', N'Fujiko F. Fujio', N'Truyện tranh', N'Nhà Xuất Bản Kim Đồng', N'Nhật Bản', 51, 16000),
@@ -160,7 +120,7 @@ INSERT INTO Sach VALUES
 
 INSERT INTO KhachHang VALUES
 ('KH01', N'Thắng', '0125364798', 'anhon123@gmail.com'),
-('KH02', N'Thuận', '0987456321', 'lebakasf66@gmail.com'),
+('KH02', N'Thuận', '0987456321', 'lebakasf66@gmail.com')
 --('KH03', N'Nguyên', '0524198763', 'xinhg537ahg@gmail.com'),
 --('KH04', N'Trung', '0874569321', 'ngheankhanhhoa5566@gmail.com'),
 --('KH05', N'Long', '0145236987', 'dongthamxinxan@gmail.com'),
@@ -172,7 +132,7 @@ INSERT INTO KhachHang VALUES
   
 INSERT INTO TK_KhachHang VALUES
 ('KH01', '1234'),
-('KH02', '1234'),
+('KH02', '1234')
 --('KH03', 'xinhg537ahg'),
 --('KH04', 'ngheankhanhhoa5566'),
 --('KH05', 'dongthamxinxan'),
@@ -185,7 +145,7 @@ INSERT INTO TK_KhachHang VALUES
 INSERT INTO NhanVien VALUES
 ('QL01', N'Lê Trọng Nghĩa', '0842156397', 'Quản lý', '2021/5/31', null),
 ('NV11', N'Võ Văn Vĩ', '0147852963', 'Thu ngân', '2020/5/31', 'QL01'),
-('NV12', N'Ngô Quốc Thiên Ân', '0159847263', 'Thu ngân', '2020/5/31', 'QL01'),
+('NV12', N'Ngô Quốc Thiên Ân', '0159847263', 'Thu ngân', '2020/5/31', 'QL01')
 --('NV01', N'Nguyễn Trường Giang', '0147852369', 'Bảo vệ', '2021/5/31', 'NV10'),
 --('NV02', N'Trần Huy Cảnh', '0321456987', 'Bảo vệ', '2021/5/31', 'NV10'),
 --('NV03', N'Lê Võ Cường Thịnh', '0365214789', 'Bảo vệ', '2021/5/31', 'NV11'),
@@ -204,20 +164,20 @@ INSERT INTO NhanVien VALUES
 
 INSERT INTO TK_NhanVien VALUES
 ('TN01', '1234'),
-('TN02', '1234'),
+('TN02', '1234')
 
 INSERT INTO CaLamViec VALUES
 ('NV11', 'CA01'),
-('NV12', 'CA02'),
+('NV12', 'CA02')
 
 INSERT INTO HoaDon VALUES
 ('HD01', 25000, '2022/5/31', 'KH01', 'NV11'),
 ('HD02', 25000, '2022/6/2', 'KH02', 'NV11'),
 ('HD03', 25000, '2022/6/4', 'KH01', 'NV12'),
-('HD06', 25000, '2022/5/31', 'KH02', 'NV12'),
+('HD06', 25000, '2022/5/31', 'KH02', 'NV12')
 
 INSERT INTO HoaDon_Sach VALUES
 ('HD01', 'MS26',1),
 ('HD02', 'MS26',1),
 ('HD03', 'MS26',1),
-('HD06', 'MS26',1),
+('HD06', 'MS26',1)
